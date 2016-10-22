@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>数控机床远程维修系统</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+   <link href="http://vjs.zencdn.net/5.11.7/video-js.css" rel="stylesheet">
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <!-- <script src="/bower_components/angular-animate/angular-animate.js"></script> -->
+  <!-- <script src="/bower_components/angular/ui-bootstrap-tpls-2.2.0.min.js"></script> -->
+  <!-- <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script> -->
+  <script src="/app.js"></script>
+  <script src="/controllers/faults.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+  <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+
+</head>
+<body>
+
+
+	<nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+          <a class="navbar-brand" href="#/faults" id="title">
+            <img src="/imgs/ussticon2.png" id="icon">
+          数控机床远程诊断系统
+          </a>
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/faults/add">添加新的故障</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<div ng-view></div>
+    		</div>
+    	</div>
+     </div>
+
+
+
+
+</body>
+</html>

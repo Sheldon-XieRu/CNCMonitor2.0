@@ -1,0 +1,27 @@
+img
+{
+width: 100%
+
+}
+
+
+#icon{
+	display: inline-block;
+	height: 55px;
+	width: 45px;
+	/*margin: 5px;*/
+}
+
+#fixHeight {
+	height: 500px;
+	border: 1px solid #D3D3D3;
+	/*margin: 10px;*/
+}
+
+#title{
+	font:italic bold 30px/30px arial,sans-serif;
+}
+
+/*#detailButton{
+	margin: 10px
+}*/

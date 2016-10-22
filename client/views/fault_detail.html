@@ -1,0 +1,77 @@
+
+<a href="#/faults">返回</a>
+<div class="panel panel-default" ng-init="getFault()">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{fault.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    	<div class="col-md-4">
+    		<img src="{{fault.image_url}}">
+    	</div>
+    	<div class="col-md-8">
+    		<p>{{fault.description}}</p>
+    		<ul class="list-group">
+    			<li class="list-group-item">故障编号: {{fault.number}}</li>
+    			<li class="list-group-item">故障严重等级: {{fault.level}}</li>
+    			<li class="list-group-item">发生工厂: {{fault.factory}}</li>
+    			<li class="list-group-item">机床型号: {{fault.machine_type}}</li>
+    			<li class="list-group-item">故障部位: {{fault.location}}</li>
+    			<li class="list-group-item">发生时间: {{fault.occur_date}}</li>
+    			<li class="list-group-item">操作人员: {{fault.manu_man_name}}</li>
+    			<li class="list-group-item">操作人员电话: {{fault.manu_man_tel}}</li>
+    		</ul>
+    	</div>
+    </div>
+        <div class="pull-right">
+        <a href="#/faults/edit/{{fault._id}}" class="btn btn-primary">编辑故障</a> | 
+        <!-- <a href="#" ng-click="removeFault(fault._id)" class="btn btn-primary" >删除故障</a>  -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            删除故障
+        </button>
+        </div>
+  </div>
+
+</div>
+
+
+<div class="panel panel-default" ng-init="getFault()" ng-show="dataReceiving">
+  <div class="panel-heading">
+    <h3 class="panel-title">维修现场实时监控</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-md-8">
+        <div id="container2" style="width:700px;height:400px"></div>
+        </div>
+        <div class="col-md-4">
+            <video id="my-video" class="video-js" controls preload="auto" width="245" height="368"
+                data-setup='{"autoplay":true}'>
+            <source src="rtmp://192.168.0.122:1935/rtmplive/room" type="rtmp">   
+        </div>
+    </div>
+
+    <script src="http://vjs.zencdn.net/5.11.7/video.js"></script>
+  </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">确定要删除该故障吗？</h4>
+      </div>
+<!--       <div class="modal-body">
+        ...
+      </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" ng-click="removeFault(fault._id)">确定</button>
+      </div>
+    </div>
+  </div>
+</div>

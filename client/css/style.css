@@ -22,6 +22,10 @@ width: 100%
 	font:italic bold 30px/30px arial,sans-serif;
 }
 
+#faultsDate{
+	margin-left: 100px;
+}
+
 /*#detailButton{
 	margin: 10px
 }*/

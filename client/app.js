@@ -29,8 +29,19 @@ myApp.config(function ($routeProvider) {
 		templateUrl:'views/edit_fault.html',
 
 	})
+	.when('/faults/findWithDate',{
+		controller:'FindController',
+		templateUrl:'views/find_fault_date.html',
+	})
+
+	.when('/faults/findWithDescription',{
+		controller:'FindController',
+		templateUrl:'views/find_fault_description.html',
+	})
 
 	.otherwise({
 		redirectTo:'/'
 	})
-})
+});
+
+

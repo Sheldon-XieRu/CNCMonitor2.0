@@ -83,3 +83,17 @@ module.exports.deleteFault= function (id,callback) {
 	var query = {_id:id};
 	Fault.remove(query,callback);
 }
+
+
+module.exports.findFaultByDate = function(beginDate,endDate,callback){
+	var query = {
+		occur_date:{
+		"$gte": new Date(beginDate),
+        "$lt":new Date(endDate)
+	}
+	}
+
+	Fault.find(query,callback);
+}
+
+

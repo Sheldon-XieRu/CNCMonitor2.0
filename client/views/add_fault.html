@@ -1,84 +1,10 @@
 
-<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+
 <a href="#/faults">Go Back</a>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h2 class="panel-title">添加最新故障</h2>
   </div>
-  <div class="panel-body">
-    <div class="row">
-<!--     		title: fault.title,
-		level: fault.level,
-		number:fault.number,
-		description:fault.description,
-		machine_type:fault.machine_type,
-		location:fault.location,
-		factory:fault.factory,
-		occur_date:fault.occur_date,
-		manu_man_name:fault.manu_man_name,
-		manu_man_tel:fault.manu_man_tel,
-		image_url:fault.image_url -->
-    	<div class="col-md-12">
-			<form role="form" ng-submit="addFault()">
-			  <div class="form-group">
-			    <label>故障名称</label>
-			    <input type="Text" class="form-control" placeholder="请输入故障名称" ng-model="fault.title">
-			  </div>
-			  <div class="form-group">
-			    <label>故障编号</label>
-			    <input type="Text" class="form-control" placeholder="请输入故障编号" ng-model="fault.number">
-			  </div>
-
-
-	        <div class="form-group">
-	          <label>故障部位</label>
-	          <input type="text" class="form-control" ng-model="fault.location" placeholder="请输入故障部位">
-	        </div>
-	        <div class="form-group">
-	          <label>故障严重等级</label>
-	          <select class="form-control" ng-model="fault.level">
-			    	<option value="轻微">轻微</option>
-		            <option value="较为严重">较为严重</option>
-		            <option value="严重">严重</option>
-		            <option value="很严重">很严重</option>
-		            <option value="非常严重">非常严重</option>
-			    </select>
-	        </div>
-	        <div class="form-group">
-	          <label>机床型号</label>
-	          <input type="text" class="form-control" ng-model="fault.machine_type" placeholder="请输入故障部位">
-	        </div>
-	        <div class="form-group">
-	          <label>故障机床所在工厂</label>
-	          <input type="text" class="form-control" ng-model="fault.factory" placeholder="请输入故障机床所在工厂">
-	        </div>
-	        <div class="form-group">
-	          <label>故障详细描述</label>
-	          <textarea class="form-control" ng-model="fault.description" placeholder="请输入故障详细描述"></textarea>
-	        </div>
-	        <div class="form-group">
-	          <label>故障发生时间</label>
-	          <input type="date" class="form-control" ng-model="fault.occur_date"></input>
-	        </div>
-	        <div class="form-group">
-	          <label>故障图片地址</label>
-	          <input type="text" class="form-control" ng-model="fault.image_url" placeholder="请输入故障故障图片地址">
-	        </div>
-	        <div class="form-group">
-	          <label>操作人员姓名</label>
-	          <input type="text" class="form-control" ng-model="fault.manu_man_name" placeholder="请输入操作人员姓名">
-	        </div>
-	        <div class="form-group">
-	          <label>操作人员联系电话</label>
-	          <input type="text" class="form-control" ng-model="fault.manu_man_tel" placeholder="请输入操作人员联系电话">
-	        </div>
-			  <button type="submit" class="btn btn-primary">提交</button>
-			</form>
-		</div>
-    </div>
-  </div>
-</div>
-
 
   <div class="container text-center">
     <section>
@@ -86,11 +12,7 @@
           <h2>输入故障详情<small></small></h2>
         </div><!-- End Page Header -->
 
-        
-          
-          
-          
-            <form action="" class="form-horizontal">
+            <form action="" class="form-horizontal" role="form" ng-submit="addFault()">
               <div class="form-group">
                 <label  class="col-md-2 control-label" >故障名称:</label>
                 <div class="col-md-10">
@@ -159,55 +81,42 @@
               </div>
 
 
+
+
               <div class="form-group">
-                <label  class="col-md-2 control-label">故障机床所在工厂</label>
+                <label  class="col-md-2 control-label">故障发生时间:</label>
+                <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="16" type="text" value="" readonly ng-model="fault.occur_date">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+        <input type="hidden" id="dtp_input2" value="" /><br/>
+              </div>
+
+              <div class="form-group">
+                <label  class="col-md-2 control-label">故障图片地址:</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" ng-model="fault.machine_type" placeholder="请输入故障机床所在工厂">
+                  <input type="text" class="form-control" ng-model="fault.image_url" placeholder="请输入故障图片地址">
                 </div>
               </div>
 
               <div class="form-group">
-                <label  class="col-md-2 control-label">故障发生日期:</label>
+                <label  class="col-md-2 control-label">维修人员姓名:</label>
                 <div class="col-md-10">
-                  <input type="date" class="form-control" ng-model="fault.occur_date">
-                </div>
-              </div>
-                <div class="form-group">
-                    <label  class="col-md-2 control-label">故障发生日期:</label>
-
-                    <div class="input-group date form_date col-md-5 text-right" data-date="" data-date-format=""  data-link-format="yyyy-mm-dd">
-                        <input class="form_datetime form-control" type="text" value="2016-03-07" size="16">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    </div>
-                    <input  type="hidden"  value="" /><br/>
-                </div>
-
-
-              <div class="form-group">
-                <label  class="col-md-2 control-label">机床型号</label>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" ng-model="fault.machine_type" placeholder="请输入故障部位">
+                  <input type="text" class="form-control" ng-model="fault.manu_man_name" placeholder="请输入维修人员姓名">
                 </div>
               </div>
 
               <div class="form-group">
-                <label  class="col-md-2 control-label">机床型号</label>
+                <label  class="col-md-2 control-label">维修人员联系电话:</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" ng-model="fault.machine_type" placeholder="请输入故障部位">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-md-2 control-label">机床型号</label>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" ng-model="fault.machine_type" placeholder="请输入故障部位">
+                  <input type="text" class="form-control" ng-model="fault.manu_man_tel" placeholder="请输入维修人员联系电话">
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
-                  <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                  <button type="submit" class="btn btn-primary pull-right">提交故障</button>
                 </div>
               </div>
 
@@ -220,24 +129,3 @@
     </section>
   </div>
 
-
-<div class="container">
-    <form action="" class="form-horizontal"  role="form">
-        <fieldset>
-            <legend>Test</legend>
-
-            <div class="form-group">
-                <label for="dtp_input2" class="col-md-2 control-label">Date Picking</label>
-                <div class="input-group date form_date col-md-5" data-date="" data-date-format="" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" value="" readonly ng-model="date123">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
-                <input  type="hidden" id="dtp_input2" value="" /><br/>
-            </div>
-
-        </fieldset>
-    </form>
-</div>
-
-<h1>{{ date123 }}</h1>

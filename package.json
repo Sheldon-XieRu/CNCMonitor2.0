@@ -9,7 +9,9 @@
   "dependencies":{
   	"express":"*",
   	"body-parser":"*",
-  	"mongoose":"*"
+  	"mongoose":"*",
+    "fs": "0.0.2",
+    "multer": "1.1.0"
   },
   "author": "xieru",
   "license": "ISC"

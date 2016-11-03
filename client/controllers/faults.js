@@ -1,7 +1,9 @@
 var myApp = angular.module('myApp');
 
-myApp.controller('FaultsController',['$scope','$http','$location','$routeParams','$interval',function ($scope,$http,$location,$routeParams,$interval) {
+myApp.controller('FaultsController',['$scope','$http','$location','$routeParams','$interval','$window',function ($scope,$http,$location,$routeParams,$interval,$window) {
 	console.log('FaultsController loaded');
+
+
 
 	$scope.getFaults = function () {
 		$http.get('api/faults').success(function (response) {
@@ -65,17 +67,7 @@ myApp.controller('FaultsController',['$scope','$http','$location','$routeParams'
     },5000);
     // requestData();
 
-    $(".form_datetime").datetimepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true,
-        todayBtn: true,
-        todayHighlight: true,
-        showMeridian: true,
-        pickerPosition: "bottom-left",
-        language: 'zh-CN',//中文，需要引用zh-CN.js包
-        startView: 2,//月视图
-        minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
-    });
+
 
 
     var refreshChart = function (data) {
@@ -136,10 +128,30 @@ myApp.controller('FaultsController',['$scope','$http','$location','$routeParams'
             });
         });
     }
-	// $scope.reverse = function () {
-	// 	console.log("reverse");
-	// 	$scope.isCollapsed = !$scope.isCollapsed;
-	// 	console.log($scope.isCollapsed);
-	// }
+
+
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        format: 'yyyy-MM-dd',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 1
+    });
+
+
+
+
+
+
+
+
+
+
+
+
 
 }]);

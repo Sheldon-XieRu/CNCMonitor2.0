@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var multer = require('multer');
 var datalist = new Array();
 var outdatalist = new Array();
 
@@ -43,6 +43,19 @@ app.get('/api/faults/:_id',function (req,res) {
 		}
 		res.json(fault);
 	});
+});
+
+
+app.get('/api/findFaultsWithDate/:_beginDate/:_endDate',function (req,res) {
+    console.log(req.params._beginDate);
+    console.log(req.params._endDate);
+
+    Fault.findFaultByDate(req.params._beginDate,req.params._endDate,function (err,faults) {
+        if (err) {
+            throw err;
+        }
+        res.json(faults);
+    });
 });
 
 app.post('/api/faults',function(req,res){
@@ -126,6 +139,36 @@ var server = net.createServer(function (socket) {
         console.log('end');
     })
 });
+
+//上传模块
+var storage = multer.diskStorage({ //multers disk storage settings
+        destination: function (req, file, cb) {
+            cb(null, '/client/uploads/');
+        },
+        filename: function (req, file, cb) {
+            var datetimestamp = Date.now();
+            cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+        }
+    });
+
+
+var upload = multer({ //multer settings
+                storage: storage
+            }).single('file');
+
+/** API path that will upload the files */
+app.post('/upload', function(req, res) {
+    upload(req,res,function(err){
+        if(err){
+             res.json({error_code:1,err_desc:err});
+             return;
+        }
+         res.json(req.file.filename);
+    });
+});
+
+
+
 
 server.listen(1338);
 

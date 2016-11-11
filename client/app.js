@@ -38,6 +38,10 @@ myApp.config(function ($routeProvider) {
 		controller:'FindController',
 		templateUrl:'views/find_fault_description.html',
 	})
+	.when('/file-upload',{
+		controller:'FaultsController',
+		templateUrl:'views/faults.html',
+	})
 
 	.otherwise({
 		redirectTo:'/'

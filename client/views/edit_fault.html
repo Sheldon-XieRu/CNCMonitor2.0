@@ -1,4 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="panel-title">上传故障图片</h2>
+  </div>
 
+  <div class="panel-body">
+    <div  >
+    <input type="file" file-model="myFile" class="input" style="display: inline;">
+    <button  ng-click="save()" class="btn btn-primary" style="display: inline;">上传</button>
+    </div>
+  </div>
+
+</div>
 
 <a href="#/faults">Go Back</a>
 <div class="panel panel-default">
@@ -92,12 +104,6 @@
         <input type="hidden" id="dtp_input2" value="" /><br/>
               </div>
 
-              <div class="form-group">
-                <label  class="col-md-2 control-label">故障图片地址:</label>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" ng-model="fault.image_url" placeholder="请输入故障图片地址">
-                </div>
-              </div>
 
               <div class="form-group">
                 <label  class="col-md-2 control-label">维修人员姓名:</label>

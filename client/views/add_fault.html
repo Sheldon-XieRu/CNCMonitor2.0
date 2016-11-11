@@ -1,9 +1,26 @@
-
-
-<a href="#/faults">Go Back</a>
+<!-- <form method="post" enctype="multipart/form-data" action="/file-upload">
+  <input type="file" name="thumbnail">
+  <input type="submit">
+</form> -->
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h2 class="panel-title">添加最新故障</h2>
+    <h2 class="panel-title">上传故障图片</h2>
+  </div>
+
+  <div class="panel-body">
+    <div  >
+    <input type="file" file-model="myFile" class="input" style="display: inline;">
+    <button  ng-click="save()" class="btn btn-primary" style="display: inline;">上传</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="panel-title">输入故障详情</h2>
   </div>
 
   <div class="container text-center">
@@ -86,19 +103,14 @@
               <div class="form-group">
                 <label  class="col-md-2 control-label">故障发生时间:</label>
                 <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" value="" readonly ng-model="fault.occur_date">
+                    <input class="form-control" size="16" type="text" value="" readonly ng-model="fault.occur_date" style="cursor:pointer">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
           <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
         <input type="hidden" id="dtp_input2" value="" /><br/>
               </div>
 
-              <div class="form-group">
-                <label  class="col-md-2 control-label">故障图片地址:</label>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" ng-model="fault.image_url" placeholder="请输入故障图片地址">
-                </div>
-              </div>
+
 
               <div class="form-group">
                 <label  class="col-md-2 control-label">维修人员姓名:</label>
@@ -120,12 +132,15 @@
                 </div>
               </div>
 
-             
+
+    
+              </div>
 
             </form>
-          
-        
+
 
     </section>
   </div>
+
+
 

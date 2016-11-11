@@ -31,6 +31,9 @@ var faultSchema = mongoose.Schema({
 	image_url:{
 		type: String,
 	},
+	imageName:{
+		type: String,
+	},
 	occur_date:{
 		type: Date,
 		default: Date.now,
@@ -73,7 +76,7 @@ module.exports.updateFault = function (id,fault,options,callback) {
 		occur_date:fault.occur_date,
 		manu_man_name:fault.manu_man_name,
 		manu_man_tel:fault.manu_man_tel,
-		image_url:fault.image_url
+		imageName:fault.imageName
 	}
 	Fault.findOneAndUpdate(query,update,options,callback);
 }

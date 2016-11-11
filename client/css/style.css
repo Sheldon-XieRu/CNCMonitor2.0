@@ -16,7 +16,7 @@ width: 100%
 }
 
 .navbar .navbar-text{
-	font-size: 35px;
+	font-size: 33px;
 }
 
 #fixHeight {
@@ -26,7 +26,7 @@ width: 100%
 }
 
 #title{
-	font:italic bold 25px/25px arial,sans-serif;
+	font:italic bold 22px/22px arial,sans-serif;
 }
 
 #faultsDate{

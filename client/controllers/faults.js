@@ -3,6 +3,8 @@ var myApp = angular.module('myApp');
 myApp.controller('FaultsController',['$scope','$http','$location','$routeParams','$interval','$window',function ($scope,$http,$location,$routeParams,$interval,$window) {
 	console.log('FaultsController loaded');
 
+    
+
 
 
 	$scope.getFaults = function () {
@@ -23,6 +25,8 @@ myApp.controller('FaultsController',['$scope','$http','$location','$routeParams'
 
 	$scope.addFault = function () {
 
+        $scope.fault.imageName = $scope.imageName;
+
 		$http.post('api/faults/',$scope.fault).success(function (response) {
 			window.location.href='#/faults';
 		});
@@ -31,6 +35,7 @@ myApp.controller('FaultsController',['$scope','$http','$location','$routeParams'
 
 	$scope.updateFault = function () {
 		var id = $routeParams.id;
+        $scope.fault.imageName = $scope.imageName;
 
 		$http.put('api/faults/'+id,$scope.fault).success(function (response) {
 			window.location.href='#/faults';
@@ -39,7 +44,8 @@ myApp.controller('FaultsController',['$scope','$http','$location','$routeParams'
 
 	$scope.removeFault = function (id) {
 		$http.delete('api/faults/'+id).success(function (response) {
-			window.location.href = '#/faults'
+			window.location.href = '#/faults';
+            window.location.reload();
 		});
 	}
 	$scope.isCollapsed = true;
@@ -66,7 +72,6 @@ myApp.controller('FaultsController',['$scope','$http','$location','$routeParams'
         requestData();
     },5000);
     // requestData();
-
 
 
 
@@ -144,6 +149,29 @@ myApp.controller('FaultsController',['$scope','$http','$location','$routeParams'
 
 
 
+$scope.imageName = '';
+
+    $scope.save = function() {    
+        var fd = new FormData();
+        var file = document.querySelector('input[type=file]').files[0];
+        fd.append('logo', file); 
+         $http({
+              method:'POST',
+              url:"/file-upload",
+              data: fd,
+              headers: {'Content-Type':undefined},
+              transformRequest: angular.identity 
+               })   
+              .success( function ( response )
+                       {
+                       //上传成功的操作
+                       console.log(response.logo.name);
+                       $scope.imageName =  response.logo.name;
+                       alert("上传成功");
+                       }); 
+
+     
+    };
 
 
 

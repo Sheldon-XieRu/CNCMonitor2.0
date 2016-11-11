@@ -5,8 +5,8 @@ var mongoose = require('mongoose');
 var multer = require('multer');
 var datalist = new Array();
 var outdatalist = new Array();
-
-
+var formidable = require('formidable');
+var fs = require('fs');
 app.use(express.static(__dirname + '/client'));
 
 app.use(bodyParser.json());
@@ -141,33 +141,43 @@ var server = net.createServer(function (socket) {
 });
 
 //上传模块
-var storage = multer.diskStorage({ //multers disk storage settings
-        destination: function (req, file, cb) {
-            cb(null, '/client/uploads/');
-        },
-        filename: function (req, file, cb) {
-            var datetimestamp = Date.now();
-            cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
-        }
-    });
+// var storage = multer.diskStorage({ //multers disk storage settings
+//         destination: function (req, file, cb) {
+//             cb(null, '/client/uploads/');
+//         },
+//         filename: function (req, file, cb) {
+//             var datetimestamp = Date.now();
+//             cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+//         }
+//     });
 
 
-var upload = multer({ //multer settings
-                storage: storage
-            }).single('file');
+// var upload = multer({ //multer settings
+//                 storage: storage
+//             }).single('file');
+
+// var upload = multer({ dest: 'client/uploads/' })
 
 /** API path that will upload the files */
-app.post('/upload', function(req, res) {
-    upload(req,res,function(err){
-        if(err){
-             res.json({error_code:1,err_desc:err});
-             return;
-        }
-         res.json(req.file.filename);
-    });
+// app.post('/upload', function(req, res) {
+//     res.json(req.files);
+// });
+
+app.post('/file-upload', function(req, res, next) {
+  var form = new formidable.IncomingForm();
+
+  form.parse(req,function (err,fields,files) {
+      req.body = fields;
+      req.files = files;
+      res.json(files);
+      // res
+
+      for (var i in req.files) {
+        fs.renameSync(files[i].path,"client/uploads/"+files[i].name);
+      }
+  });
+
 });
-
-
 
 
 server.listen(1338);

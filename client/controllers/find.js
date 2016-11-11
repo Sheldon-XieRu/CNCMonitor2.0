@@ -13,10 +13,6 @@ myApp.controller('FindController',['$scope','$http',function ($scope,$http) {
 	};
 
 
-	
-
-
-
 	$('.form_date').datetimepicker({
         language:  'zh-CN',
         format: 'yyyy-MM-dd',
